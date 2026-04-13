@@ -13,121 +13,131 @@ function MissionPage() {
   const [solutionCode, setSolutionCode] = useState(initialBrokenSnippet)
 
   return (
-    <main className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
-      <section className="mx-auto grid w-full max-w-6xl gap-6">
-        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-            <header className="mb-4 border-b border-slate-200 pb-3">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                Visual Comparison
+    <main className="min-h-screen bg-[#0f1117] p-4 text-slate-200 sm:p-6 lg:p-8">
+      <section className="mx-auto grid w-full max-w-[1400px] gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="grid gap-4">
+          <section className="rounded-xl border border-slate-800 bg-[#161a22] p-4">
+            <header className="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
+                Top Section
               </h2>
+              <span className="rounded-full border border-slate-700 px-2 py-0.5 text-[11px] text-slate-400">
+                Before vs After
+              </span>
             </header>
 
-            <div className="grid gap-4 xl:grid-cols-2">
-              <section className="rounded-lg border border-slate-200 bg-slate-50 p-2">
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <article className="rounded-lg border border-slate-800 bg-[#0f1117] p-3">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-rose-300">
                   Broken Preview
                 </h3>
-                <div className="rounded-lg border-4 border-red-500 bg-white p-2">
-                  <div className="h-[380px] w-full overflow-hidden bg-white">
-                    <h1 className="ml-36 mt-2 text-xs font-black tracking-[0.35em] text-blue-500">
+                <div className="rounded-md border-2 border-rose-500/70 bg-[#f3f4f6] p-2">
+                  <div className="h-[320px] overflow-hidden bg-[#f3f4f6]">
+                    <h1 className="ml-32 mt-1 text-[10px] font-black tracking-[0.28em] text-blue-500">
                       BROKEN CARD
                     </h1>
-
-                    <p className="mt-40 pr-24 text-right font-mono text-2xl italic text-lime-500">
+                    <p className="mt-36 pr-16 text-right font-mono text-2xl italic text-lime-500">
                       this text should not look like this
                     </p>
-
                     <button
                       type="button"
-                      className="ml-80 mt-[-190px] rotate-12 border-2 border-black bg-yellow-300 px-1 py-6 text-[10px] uppercase"
+                      className="ml-72 mt-[-140px] rotate-12 border-2 border-black bg-yellow-300 px-1 py-4 text-[9px] uppercase text-black"
                     >
                       Click?
                     </button>
                   </div>
                 </div>
-              </section>
+              </article>
 
-              <section className="rounded-lg border border-slate-200 bg-slate-50 p-2">
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <article className="rounded-lg border border-slate-800 bg-[#0f1117] p-3">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-emerald-300">
                   Target Preview
                 </h3>
-                <div className="rounded-lg border border-emerald-300 bg-white p-5">
-                  <div className="mx-auto flex h-[380px] max-w-[320px] items-center justify-center">
-                    <article className="w-full rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                      <h4 className="text-xl font-bold text-slate-900">
+                <div className="rounded-md border border-emerald-400/50 bg-[#f8fafc] p-4">
+                  <div className="mx-auto flex h-[320px] max-w-[320px] items-center justify-center">
+                    <div className="w-full rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+                      <h4 className="text-xl font-semibold text-slate-900">
                         Product Card
                       </h4>
                       <p className="mt-3 text-sm leading-6 text-slate-600">
-                        This text is readable, balanced, and aligned for a
-                        clean interface.
+                        Clear hierarchy, clean spacing, and consistent visual
+                        style.
                       </p>
                       <button
                         type="button"
-                        className="mt-5 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
+                        className="mt-5 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white"
                       >
                         Add to cart
                       </button>
-                    </article>
+                    </div>
                   </div>
                 </div>
-              </section>
+              </article>
             </div>
-          </article>
+          </section>
 
-          <aside className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h1 className="text-2xl font-bold text-slate-900">
-              Mission 1 - Fix the card
-            </h1>
-
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              The card layout is broken: alignment, typography, and positioning
-              are inconsistent. Your goal is to restore a clean and readable
-              UI.
-            </p>
-
-            <div className="mt-6">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                Objectives
+          <section className="rounded-xl border border-slate-800 bg-[#161a22] p-4">
+            <header className="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
+                Solution
               </h2>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
-                <li>Center the title</li>
-                <li>Fix the paragraph style</li>
-                <li>Reposition the button</li>
-              </ul>
-            </div>
+              <button
+                type="button"
+                onClick={() => setSolutionCode(initialBrokenSnippet)}
+                className="rounded-md border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-medium text-slate-200 transition hover:border-slate-500 hover:bg-slate-800"
+              >
+                Reset Code
+              </button>
+            </header>
 
-            <button
-              type="button"
-              disabled
-              className="mt-8 w-full cursor-not-allowed rounded-md bg-slate-300 px-4 py-2 text-sm font-semibold text-slate-600"
-            >
-              Validate Mission
-            </button>
-          </aside>
+            <textarea
+              className="h-72 w-full resize-y rounded-md border border-slate-700 bg-[#0b0e14] p-3 font-mono text-sm leading-6 text-slate-100 outline-none ring-sky-500/30 placeholder:text-slate-500 focus:ring-2"
+              value={solutionCode}
+              onChange={(event) => setSolutionCode(event.target.value)}
+              spellCheck={false}
+            />
+          </section>
         </div>
 
-        <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-          <header className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-              Solution
-            </h2>
-            <button
-              type="button"
-              onClick={() => setSolutionCode(initialBrokenSnippet)}
-              className="rounded-md border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:bg-slate-100"
-            >
-              Reset Code
-            </button>
-          </header>
+        <aside className="rounded-xl border border-slate-800 bg-[#161a22] p-5 xl:sticky xl:top-6 xl:h-fit">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
+            Mission Info
+          </p>
 
-          <textarea
-            className="h-64 w-full resize-y rounded-lg border border-slate-300 bg-slate-50 p-3 font-mono text-sm leading-6 text-slate-800 outline-none ring-slate-300 focus:ring-2"
-            value={solutionCode}
-            onChange={(event) => setSolutionCode(event.target.value)}
-            spellCheck={false}
-          />
-        </section>
+          <h1 className="text-2xl font-semibold text-slate-100">
+            Mission 1 - Fix the card
+          </h1>
+
+          <p className="mt-3 text-sm leading-6 text-slate-400">
+            Compare broken and target previews, then rewrite the code below to
+            match the expected result.
+          </p>
+
+          <div className="mt-6">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
+              Objectives
+            </h2>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
+              <li className="rounded border border-slate-800 bg-[#10141c] px-3 py-2">
+                Center the title
+              </li>
+              <li className="rounded border border-slate-800 bg-[#10141c] px-3 py-2">
+                Fix the paragraph style
+              </li>
+              <li className="rounded border border-slate-800 bg-[#10141c] px-3 py-2">
+                Reposition the button
+              </li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            disabled
+            className="mt-6 w-full cursor-not-allowed rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-500"
+          >
+            Validate Mission
+          </button>
+        </aside>
       </section>
     </main>
   )
