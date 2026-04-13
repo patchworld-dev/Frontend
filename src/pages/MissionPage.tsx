@@ -1,5 +1,7 @@
+import { useState } from 'react'
+
 function MissionPage() {
-  const brokenSnippet = `<div class="card">
+  const initialBrokenSnippet = `<div class="card">
   <h1 style="margin-left: 140px; font-size: 10px;">BROKEN CARD</h1>
   <p style="margin-top: 180px; text-align: right; color: lime;">
     this text should not look like this
@@ -8,6 +10,7 @@ function MissionPage() {
     Click?
   </button>
 </div>`
+  const [solutionCode, setSolutionCode] = useState(initialBrokenSnippet)
 
   return (
     <main className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
@@ -73,15 +76,23 @@ function MissionPage() {
         </div>
 
         <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-          <header className="mb-4 border-b border-slate-200 pb-3">
+          <header className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               Solution
             </h2>
+            <button
+              type="button"
+              onClick={() => setSolutionCode(initialBrokenSnippet)}
+              className="rounded-md border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:bg-slate-100"
+            >
+              Reset Code
+            </button>
           </header>
 
           <textarea
             className="h-64 w-full resize-y rounded-lg border border-slate-300 bg-slate-50 p-3 font-mono text-sm leading-6 text-slate-800 outline-none ring-slate-300 focus:ring-2"
-            defaultValue={brokenSnippet}
+            value={solutionCode}
+            onChange={(event) => setSolutionCode(event.target.value)}
             spellCheck={false}
           />
         </section>
