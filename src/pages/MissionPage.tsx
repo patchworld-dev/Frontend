@@ -1,5 +1,30 @@
 import { useState } from 'react'
 
+type ValidationResult = {
+  isValid: boolean
+  message: string
+}
+
+function validateMissionCode(code: string): ValidationResult {
+  const normalizedCode = code.toLowerCase()
+  const hasLegacyTitleOffset = normalizedCode.includes('margin-left: 140px')
+  const hasLegacyButtonRotation = normalizedCode.includes('transform: rotate')
+  const hasCenteredText = normalizedCode.includes('text-align: center')
+
+  if (!hasLegacyTitleOffset && !hasLegacyButtonRotation && hasCenteredText) {
+    return {
+      isValid: true,
+      message: 'Mission passed. Your code now matches the expected direction.',
+    }
+  }
+
+  return {
+    isValid: false,
+    message:
+      'Mission not solved yet. Remove legacy offsets/rotation and center text alignment.',
+  }
+}
+
 function MissionPage() {
   const initialBrokenSnippet = `<div class="card">
   <h1 style="margin-left: 140px; font-size: 10px;">BROKEN CARD</h1>
@@ -11,6 +36,21 @@ function MissionPage() {
   </button>
 </div>`
   const [solutionCode, setSolutionCode] = useState(initialBrokenSnippet)
+  const [validationResult, setValidationResult] = useState<ValidationResult | null>(null)
+
+  const handleResetCode = () => {
+    setSolutionCode(initialBrokenSnippet)
+    setValidationResult(null)
+  }
+
+  const handleCodeChange = (nextCode: string) => {
+    setSolutionCode(nextCode)
+    setValidationResult(null)
+  }
+
+  const handleValidateMission = () => {
+    setValidationResult(validateMissionCode(solutionCode))
+  }
 
   return (
     <main className="min-h-screen bg-[#0f1117] p-5 text-slate-200 sm:p-7 lg:p-9">
@@ -83,7 +123,7 @@ function MissionPage() {
               </h2>
               <button
                 type="button"
-                onClick={() => setSolutionCode(initialBrokenSnippet)}
+                onClick={handleResetCode}
                 className="rounded-md border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-100 transition hover:border-slate-400 hover:bg-slate-800"
               >
                 Reset Code
@@ -93,7 +133,7 @@ function MissionPage() {
             <textarea
               className="h-80 w-full resize-y rounded-md border border-slate-600 bg-[#0b0e14] p-4 font-mono text-sm leading-7 text-slate-100 outline-none ring-sky-500/30 placeholder:text-slate-500 focus:ring-2"
               value={solutionCode}
-              onChange={(event) => setSolutionCode(event.target.value)}
+              onChange={(event) => handleCodeChange(event.target.value)}
               spellCheck={false}
             />
           </section>
@@ -132,11 +172,23 @@ function MissionPage() {
 
           <button
             type="button"
-            disabled
-            className="mt-7 w-full cursor-not-allowed rounded-md border border-slate-600 bg-slate-800/90 px-4 py-2.5 text-sm font-semibold text-slate-400"
+            onClick={handleValidateMission}
+            className="mt-7 w-full rounded-md border border-sky-500/40 bg-sky-500/15 px-4 py-2.5 text-sm font-semibold text-sky-200 transition hover:bg-sky-500/20"
           >
             Validate Mission
           </button>
+
+          {validationResult && (
+            <p
+              className={`mt-3 rounded-md border px-3 py-2 text-sm ${
+                validationResult.isValid
+                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                  : 'border-rose-500/40 bg-rose-500/10 text-rose-300'
+              }`}
+            >
+              {validationResult.message}
+            </p>
+          )}
         </aside>
       </section>
     </main>
