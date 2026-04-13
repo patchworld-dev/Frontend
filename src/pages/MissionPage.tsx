@@ -15,30 +15,62 @@ function MissionPage() {
   return (
     <main className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
       <section className="mx-auto grid w-full max-w-6xl gap-6">
-        <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
           <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
             <header className="mb-4 border-b border-slate-200 pb-3">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                Broken Preview
+                Visual Comparison
               </h2>
             </header>
 
-            <div className="rounded-lg border-4 border-red-500 bg-white p-2">
-              <section className="h-[420px] w-full max-w-[440px] overflow-hidden bg-white">
-                <h1 className="ml-36 mt-2 text-xs font-black tracking-[0.35em] text-blue-500">
-                  BROKEN CARD
-                </h1>
+            <div className="grid gap-4 xl:grid-cols-2">
+              <section className="rounded-lg border border-slate-200 bg-slate-50 p-2">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Broken Preview
+                </h3>
+                <div className="rounded-lg border-4 border-red-500 bg-white p-2">
+                  <div className="h-[380px] w-full overflow-hidden bg-white">
+                    <h1 className="ml-36 mt-2 text-xs font-black tracking-[0.35em] text-blue-500">
+                      BROKEN CARD
+                    </h1>
 
-                <p className="mt-40 pr-24 text-right font-mono text-2xl italic text-lime-500">
-                  this text should not look like this
-                </p>
+                    <p className="mt-40 pr-24 text-right font-mono text-2xl italic text-lime-500">
+                      this text should not look like this
+                    </p>
 
-                <button
-                  type="button"
-                  className="ml-80 mt-[-190px] rotate-12 border-2 border-black bg-yellow-300 px-1 py-6 text-[10px] uppercase"
-                >
-                  Click?
-                </button>
+                    <button
+                      type="button"
+                      className="ml-80 mt-[-190px] rotate-12 border-2 border-black bg-yellow-300 px-1 py-6 text-[10px] uppercase"
+                    >
+                      Click?
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-lg border border-slate-200 bg-slate-50 p-2">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Target Preview
+                </h3>
+                <div className="rounded-lg border border-emerald-300 bg-white p-5">
+                  <div className="mx-auto flex h-[380px] max-w-[320px] items-center justify-center">
+                    <article className="w-full rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                      <h4 className="text-xl font-bold text-slate-900">
+                        Product Card
+                      </h4>
+                      <p className="mt-3 text-sm leading-6 text-slate-600">
+                        This text is readable, balanced, and aligned for a
+                        clean interface.
+                      </p>
+                      <button
+                        type="button"
+                        className="mt-5 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
+                      >
+                        Add to cart
+                      </button>
+                    </article>
+                  </div>
+                </div>
               </section>
             </div>
           </article>
